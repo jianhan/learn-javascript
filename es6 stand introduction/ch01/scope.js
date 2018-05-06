@@ -16,3 +16,15 @@ for (var i = 0; i < s.length; i++) {
 }
 console.log(i); // 5
 // 上面代码中，变量 i 只用来控制循环，但是循环结束后，它并没有消失，泄露成 了全局变量
+
+// es6 let scope
+
+function f1() {
+    let x = 1
+    {
+        let x = 2
+    }
+    console.log(x)
+}
+
+f1()
