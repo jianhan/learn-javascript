@@ -7,7 +7,7 @@ const foo = {};
 foo.prop = 123;
 foo.prop // 123
 // 将 foo 指向另一个对象，就会报错
-foo = {}; // TypeError: "foo" is read-only
+// foo = {}; // TypeError: "foo" is read-only
 
 // 上面代码中，常量 foo 储存的是一个地址，这个地址指向一个对象。不可变的只 是这个地址，即不能把 foo 指向另一个地址，但对象本身是可变的，所以依然可
 // 以为其添加新属性
@@ -18,9 +18,9 @@ a.length = 0; // 可执行
 a = ['Dave']; // 报错
 // 上面代码中，常量 a 是一个数组，这个数组本身是可写的，但是如果将另一个数 组赋值给 a ，就会报错 如果真的想将对象冻结，应该使用
 // Object.freeze 方法。
-const foo = Object.freeze({});
+const bar = Object.freeze({});
 // 常规模式时，下面一行不起作用； 严格模式时，该行会报错
-foo.prop = 123;
+bar.prop = 123;
 
 // 除了将对象本身冻结，对象的属性也应该冻结。下面是一个将对象彻底冻结的函数
 
