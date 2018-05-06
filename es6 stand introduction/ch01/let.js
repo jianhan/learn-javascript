@@ -30,3 +30,10 @@ for (let i = 0; i < 3; i++) {
 // var 命令会发生”变量提升“现象，即变量可以在声明之前使用，值为 undefined 
 console.log(x)
 var x = 12
+
+// tmp dead zone
+var tmp = 123;
+if (true) {
+tmp = 'abc'; // ReferenceError
+let tmp;
+}
