@@ -82,3 +82,36 @@ let [foo = true] = [];
 foo // true
 let [x, y = 'b'] = ['a']; // x='a', y='b'
 let [x, y = 'b'] = ['a', undefined]; // x='a', y='b'
+
+// only undefined will trigger default value
+let [x = 1] = [undefined];
+x // 1
+let [x = 1] = [null];
+x // null
+
+// 对象的解构与数组有一个重要的不同。数组的元素是按次序排列的，变量的取值由
+// 它的位置决定；而对象的属性没有次序，变量必须与属性同名，才能取到正确的
+// 值。
+let { bar, foo } = { foo: "aaa", bar: "bbb" };
+foo // "aaa"
+bar // "bbb"
+let { baz } = { foo: "aaa", bar: "bbb" };
+baz // undefined
+
+// 如果变量名与属性名不一致，必须写成下面这样。
+var { foo: baz } = { foo: 'aaa', bar: 'bbb' };
+baz // "aaa"
+let obj = { first: 'hello', last: 'world' };
+let { first: f, last: l } = obj;
+f // 'hello'
+l // 'world
+
+// 这实际上说明，对象的解构赋值是下面形式的简写（ 参见《 对象的扩展》 一章） 。
+let { foo: foo, bar: bar } = { foo: "aaa", bar: "bbb" };
+// 也就是说，对象的解构赋值的内部机制，是先找到同名属性，然后再赋给对应的变
+// 量。真正被赋值的是后者，而不是前者。
+let { foo: baz } = { foo: "aaa", bar: "bbb" };
+baz // "aaa"
+foo // error: foo is not defined
+// 上面代码中， foo 是匹配的模式， baz 才是变量。真正被赋值的是变量 baz ，
+// 而不是模式 foo
