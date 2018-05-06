@@ -6,11 +6,23 @@
 }
 // ReferenceError: a is not defined.
 console.log(b) // 1
-// a is not defined
-// console.log(a)
-
-// let with for example
+// a is not defined console.log(a) let with for example
 
 for (let k = 0; k < 10; k++) {
     console.log(k)
+}
+
+var a = []
+for (var i = 0; i < 10; i++) {
+    a[i] = function () {
+        console.log("In loop fetch value of I", i)
+    }
+}
+
+console.log("Value of A6 is", a[6](), a[5]())
+
+// scope
+for (let i = 0; i < 3; i++) {
+    let i = 'abc';
+    console.log(i);
 }
