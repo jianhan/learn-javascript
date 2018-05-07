@@ -174,3 +174,17 @@ x20 // "Hello"
 y19 // "World"
 p // ["Hello", {y: "World"}]
 console.log(x20,y19,p)
+
+// 对象的解构也可以指定默认值
+
+var {x21 = 3} = {};
+x21 // 3
+var {x22, y22 = 5} = {x22: 1};
+x22 // 1
+y22 // 5
+var {x23: y23 = 3} = {};
+y23 // 3
+var {x24: y24 = 3} = {x24: 5};
+y24 // 5
+var { message: msg = 'Something went wrong' } = {};
+console.log(msg) // "Something went wrong"
