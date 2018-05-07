@@ -188,3 +188,9 @@ var {x24: y24 = 3} = {x24: 5};
 y24 // 5
 var { message: msg = 'Something went wrong' } = {};
 console.log(msg) // "Something went wrong"
+
+// 默认值生效的条件是，对象的属性值严格等于 undefined 。
+var {x25 = 3} = {x25: undefined};
+console.log(x25) // 3
+var {x26 = 3} = {x26: null};
+console.log(x26) // null
