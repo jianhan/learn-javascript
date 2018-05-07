@@ -49,6 +49,49 @@ var y = 2;
 // "1 + 2 = 3"
 `${x} + ${y * 2} = ${x + y * 2}`
 // "1 + 4 = 5"
-var obj = {x: 1, y: 2};
+var obj = {
+  x: 1,
+  y: 2
+};
 `${obj.x + obj.y}`
 // "3"
+
+// 模板字符串之中还能调用函数
+function fn() {
+  return "Hello World";
+}
+`
+foo ${fn()} bar`
+// foo Hello World bar
+
+// 如果大括号中的值不是字符串，将按照一般的规则转为字符串。比如，大括号中是一个对象，将默认调用对象的 toString 方法
+// 如果模板字符串中的变量没有声明，将报错
+// 变量place没有声明
+var msg = `Hello, ${place}`;
+// 报错
+
+// 模板字符串甚至还能嵌套
+const tmpl = addrs => `
+<table>
+${addrs.map(addr => `
+<tr><td>${addr.first}</td></tr>
+<tr><td>${addr.last}</td></tr>
+`).join('')}
+</table>
+`;
+
+const data = [
+{ first: '<Jane>', last: 'Bond' },
+{ first: 'Lars', last: '<Croft>' },
+];
+console.log(tmpl(data));
+
+// 如果需要引用模板字符串本身，在需要时执行，可以像下面这样写
+// 写法一
+let str = 'return ' + '`Hello ${name}!`';
+let func = new Function('name', str);
+func('Jack') // "Hello Jack!"
+// 写法二
+let str = '(name) => `Hello ${name}!`';
+let func = eval.call(null, str);
+func('Jack') // "Hello Jack!"
