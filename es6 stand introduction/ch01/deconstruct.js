@@ -217,3 +217,13 @@ console.log(baz27)
 let x30 = "test";
 ({x30} = {x30: 1});
 console.log(x30)
+
+// 对象的解构赋值，可以很方便地将现有对象的方法，赋值到某个变量
+let { log, sin, cos } = Math;
+// 上面代码将 Math 对象的对数、正弦、余弦三个方法，赋值到对应的变量上，使用起来就会方便很多
+
+// 由于数组本质是特殊的对象，因此可以对数组进行对象属性的解构
+
+let arr1 = [1, 2, 3];
+let {0 : first, [arr1.length - 1] : last} = arr1;
+console.log(first,last) // 1
