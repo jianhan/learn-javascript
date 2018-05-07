@@ -194,3 +194,11 @@ var {x25 = 3} = {x25: undefined};
 console.log(x25) // 3
 var {x26 = 3} = {x26: null};
 console.log(x26) // null
+
+// 如果解构模式是嵌套的对象，而且子对象所在的父属性不存在，那么将会报错
+// 报错
+let {foo27: {baz27}} = {foo27: {baz27: 'ba27'}};
+console.log(baz27)
+// 原因很简单，因为 foo 这时等于 undefined ，再取子属性就会报错，请看下面的代码
+// let _tmp = {baz27: 'baz'};
+// _tmp.foo27.bar27 // 报错
