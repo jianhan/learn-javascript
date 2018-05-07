@@ -23,11 +23,19 @@ let {
 } = exampleArr();
 console.log(foo,bar)
 
-// 函数参数的定义
-// 解构赋值可以方便地将一组参数与变量名对应起来
+// 3. 函数参数的定义, 解构赋值可以方便地将一组参数与变量名对应起来
 
 function printPerson({name, age, address}) {
   console.log(name, age, address)
 }
 
 printPerson({name: "James", age: 21, address: "james street"})
+
+// 4. 提取JSON数据, 解构赋值对提取JSON对象中的数据，尤其有用
+let jsonData = {
+id: 42,
+status: "OK",
+data: [867, 5309]
+};
+let { id, status, data: number } = jsonData;
+console.log(id, status, number);
