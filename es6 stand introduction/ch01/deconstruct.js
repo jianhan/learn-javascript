@@ -61,12 +61,13 @@ b1 // 2
 d1 // 4
 
 // 报错
-let [foo5] = 1;
-let [foo6] = false;
-let [foo7] = NaN;
-let [foo8] = undefined;
-let [foo9] = null;
-let [foo10] = {};
+// let [foo5] = 1;
+// let [foo6] = false;
+// let [foo7] = NaN;
+// let [foo8] = undefined;
+// let [foo9] = null;
+// let [foo10] = {};
+
 // 上面的语句都会报错，因为等号右边的值，要么转为对象以后不具备 Iterator 接口 （ 前五个表达式） ，要么本身就不具备 Iterator 接口（
 // 最后一个表达式） 。 对于 Set 结构，也可以使用数组的解构赋值。
 let [x6,
@@ -130,26 +131,26 @@ l // 'world
 
 // 这实际上说明，对象的解构赋值是下面形式的简写（ 参见《 对象的扩展》 一章） 。
 let {
-  foo: foo,
-  bar: bar
+  foo15: foo15,
+  bar15: bar15
 } = {
-  foo: "aaa",
-  bar: "bbb"
+  foo15: "aaa",
+  bar15: "bbb"
 };
 // 也就是说，对象的解构赋值的内部机制，是先找到同名属性，然后再赋给对应的变
 // 量。真正被赋值的是后者，而不是前者。
 let {
-  foo: baz
+  foo17: baz16
 } = {
-  foo: "aaa",
-  bar: "bbb"
+  foo17: "aaa",
+  bar17: "bbb"
 };
-baz // "aaa"
-foo // error: foo is not defined
+baz16 // "aaa"
+// foo17 // error: foo is not defined
 // 上面代码中， foo 是匹配的模式， baz 才是变量。真正被赋值的是变量 baz ，
 // 而不是模式 foo
 
-let obj = {
+let obj1 = {
   p: [
     'Hello',
     {
@@ -158,18 +159,18 @@ let obj = {
   ]
 };
 let {
-  p: [x, {
-    y
+  p: [x18, {
+    y18
   }]
-} = obj;
-x // "Hello"
-y // "World"
+} = obj1;
+x18 // "Hello"
+y18 // "World"
 
 // 注意，这时 p 是模式，不是变量，因此不会被赋值。如果 p 也要作为变量赋值，
 // 可以写成下面这样。
 
-let { p, p: [x, { y }] } = obj;
-x // "Hello"
-y // "World"
+let { p, p: [x20, { y: y19 }] } = obj1;
+x20 // "Hello"
+y19 // "World"
 p // ["Hello", {y: "World"}]
-console.log(x,y,p)
+console.log(x20,y19,p)
