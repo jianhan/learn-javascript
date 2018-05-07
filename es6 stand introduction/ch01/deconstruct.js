@@ -202,3 +202,18 @@ console.log(baz27)
 // 原因很简单，因为 foo 这时等于 undefined ，再取子属性就会报错，请看下面的代码
 // let _tmp = {baz27: 'baz'};
 // _tmp.foo27.bar27 // 报错
+
+// 如果要将一个已经声明的变量用于解构赋值，必须非常小心
+
+// 错误的写法
+
+// let x;
+// {x} = {x: 1};
+
+// SyntaxError: syntax error
+
+// 只有不将大括号写在行首，避免 JavaScript 将其解释为代码块，才能解决这个问题
+// 正确的写法
+let x30 = "test";
+({x30} = {x30: 1});
+console.log(x30)
