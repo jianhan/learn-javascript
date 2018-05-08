@@ -70,3 +70,12 @@ function tailFactorial(n, total) {
 }
 const factorial = currying(tailFactorial, 1);
 factorial(5) // 120
+
+// 第二种方法就简单多了，就是采用 ES6 的函数默认值
+function factorial(n, total = 1) {
+  if (n === 1) return total;
+  return factorial(n - 1, n * total);
+}
+factorial(5) // 120
+// 纯粹的函数式编程语言没有循环操作命令，所有的循环都用递归实现，这就是为什么尾递归对这些语言极其重要
+// 只需要知道循环可以用递归代替，而一旦使用递归，就最好使用尾递归
